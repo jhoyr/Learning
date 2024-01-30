@@ -1,5 +1,4 @@
 ﻿using Learning.Examples;
-using System.Linq.Expressions;
 
 namespace Learning;
 
@@ -45,11 +44,34 @@ class Program
         //Repetition.VerifyStarts();
         //Console.WriteLine();
 
-        Block("Notas de alunos");
-        Graded.GradedAssigns();
+        //Block("Notas de alunos");
+        //Graded.GradedAssigns();
+        //Console.WriteLine();
+
+        //Block("Condições booleanas");
+        //Booleans.GetBooleans();
+        //Console.WriteLine();
+
+        //Block("Blocos de código");
+        //CodeBlocks.GetCodeBlocks();
+        //Console.WriteLine();
+
+        //Block("Instrução Switch");
+        //SwitchCase.GetSwitchCases();
+        //Console.WriteLine();
+
+        //Block("Instrução For");
+        //ForAndForeach.GetFor();
+        //Console.WriteLine();
+
+        //Block("Instrução While e Do-While");
+        //WhileAndDoWhile.GetDoWhile();
+        //Console.WriteLine();
+
+        Block("Programa Contoso Pets");
+        ContosoPets.GetApp();
         Console.WriteLine();
     }
-
 
     public static void Block(string name)
     {

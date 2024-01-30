@@ -24,6 +24,10 @@ public class Graded
 
         string currentStudentLetterGrade = "";
 
+        // Display the header row for scores/grades
+        Console.Clear();
+        Console.WriteLine("Student\t\tExam Score\tOverall Grade\tExtra Credit\n");
+
         // Write the Report Header to the console
         Console.WriteLine("Student\t\tGrade\n");
 
@@ -57,29 +61,41 @@ public class Graded
 
             else
                 continue;
-            // initialize/reset the sum of scored assignments
+            // Initialize/reset the sum of scored assignments
             int sumAssignmentScores = 0;
 
-            // initialize/reset the calculated average of exam + extra credit scores
+            // Initialize/reset the calculated average of exam + extra credit scores
             decimal currentStudentGrade = 0;
+            decimal currentStudentExamScore = 0;
+            decimal currentStudentExtraCreditScore = 0;
 
-            // initialize/reset a counter for the number of assignment 
+            // Initialize/reset a counter for the number of assignment 
             int gradedAssignments = 0;
+            int gradedExtraCreditAssignments = 0;
 
-            // loop through the scores array and complete calculations for currentStudent
+            int sumExamScores = 0;
+            int sumExtraCreditScores = 0;
+
+            // Loop through the scores array and complete calculations for currentStudent
             foreach (int score in studentScores)
             {
-                // increment the assignment counter
+                // Increment the assignment counter
                 gradedAssignments += 1;
 
                 if (gradedAssignments <= examAssignments)
-                    // add the exam score to the sum
+                {
+                    // Add the exam score to the sum
                     sumAssignmentScores += score;
-
+                }
                 else
-                    // add the extra credit points to the sum - bonus points equal to 10% of an exam score
-                    sumAssignmentScores += score / 10;
+                {
+                    gradedExtraCreditAssignments += 1;
+                    sumExtraCreditScores += score;
+                }
             }
+
+            currentStudentExamScore = (decimal)(sumExamScores) / examAssignments;
+            currentStudentExtraCreditScore = (decimal)(sumExtraCreditScores) / gradedExtraCreditAssignments;
 
             currentStudentGrade = (decimal)(sumAssignmentScores) / examAssignments;
 
@@ -123,10 +139,10 @@ public class Graded
                 currentStudentLetterGrade = "F";
 
             //Console.WriteLine("Student\t\tGrade\tLetter Grade\n");
-            Console.WriteLine($"{currentStudent}\t\t{currentStudentGrade}\t{currentStudentLetterGrade}");
+            Console.WriteLine($"{currentStudent}\t\t{currentStudentExamScore}\t\t{currentStudentGrade}\t{currentStudentLetterGrade}\t{currentStudentExtraCreditScore} ({(((decimal)sumExtraCreditScores / 10) / examAssignments)} pts)");
         }
 
-        // required for running in VS Code (keeps the Output windows open to view results)
+        // Required for running in VS Code (keeps the Output windows open to view results)
         Console.WriteLine("\n\rPress the Enter key to continue");
         Console.ReadLine();
     }
